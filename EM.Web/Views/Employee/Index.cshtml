@@ -1,0 +1,49 @@
+﻿@model List<EM.Web.Models.EmployeeModel>;
+@{
+    ViewData["Title"] = "Employee Page";
+}
+
+<div class="text-center bg">
+    <h1 class="display-4">Welcome to Employee Management</h1>
+</div>
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["message"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date Of Birth</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var emp in Model)
+            {
+                <tr>
+                    <th scope="row">@emp.Id</th>
+                    <td>@emp.Name</td>
+                    <td>@emp.DateOfBirth</td>
+                    <td>
+                        <a type="button" asp-area="" asp-action="look" asp-controller="employee" asp-route-id="@emp.Id" class="btn-warning btn"> View </a>
+                        <a type="button" asp-area="" asp-action="update" asp-controller="employee" asp-route-id="@emp.Id" class="btn-primary btn ml-2"> Edit </a>
+                        <a type="button" asp-area="" asp-action="delete" asp-controller="employee" asp-route-id="@emp.Id" class="btn-danger btn ml-2"> Delete </a>
+
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <div>No Record Found</div>
+        }
+    </tbody>
+</table>
