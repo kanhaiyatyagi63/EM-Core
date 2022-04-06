@@ -17,7 +17,7 @@ builder.Services
 
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<ILanguageService, LanguageService>();
-
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 // http request piple 
 var app = builder.Build();
 // middlewares => 

@@ -1,54 +1,52 @@
-﻿using EM.Web.Models;
+﻿using EM.Models.Employee;
+using EM.Services.Abstracts;
+using EM.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EM.Web.Controllers
 {
     public class EmployeeController : Controller
     {
-        public static List<EmployeeModel> _employeeList;
-        public static int IdIncrement = 1;
+        private readonly IEmployeeService _employeeService;
+        private readonly IDepartmentService _departmentService;
+        private readonly ILanguageService _languageService;
 
-        public EmployeeController()
+
+        public EmployeeController(IEmployeeService employeeService,
+            IDepartmentService departmentService,
+            ILanguageService languageService)
         {
-            if (_employeeList == null)
-                _employeeList = new List<EmployeeModel>() {
-                new EmployeeModel(){
-                Id = 1,
-                Name = "Kanhaiya",
-                DateOfBirth = DateTime.Now,
-                },
-                new EmployeeModel(){
-                Id = 2,
-                Name = "Raghav",
-                DateOfBirth = DateTime.Now,
-                },
-                new EmployeeModel(){
-                Id = 3,
-                Name = "Yash",
-                DateOfBirth = DateTime.Now,
-                }
-                };
+            _employeeService = employeeService;
+            _departmentService = departmentService;
+            _languageService = languageService;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_employeeList);
+
+            return View(await _employeeService.GetAllAsync());
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.departments = await _departmentService.GetAllAsync();
+            ViewBag.languages = await _languageService.GetAllAsync();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(EmployeeModel employee)
+        public async Task<IActionResult> Create(EmployeeAddModel employee)
         {
-            employee.Id = IdIncrement;
-            _employeeList.Add(employee);
-            IdIncrement++;
-            TempData["message"] = "Employee created successfully!";
+            if (!ModelState.IsValid)
+                return View(employee);
+            var isInserted = await _employeeService.AddAsync(employee);
+            if (isInserted)
+                TempData["message"] = "Employee created successfully!";
+            else
+                TempData["message"] = "Unable to create employee!";
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -57,23 +55,23 @@ namespace EM.Web.Controllers
         {
             if (id <= 0)
                 return NotFound();
-            var employee = _employeeList.Where(x => x.Id == id)
-                                         .FirstOrDefault();
-            if (employee == null)
-                return NotFound();
-            return View(employee);
+            //var employee = _employeeList.Where(x => x.Id == id)
+            //                             .FirstOrDefault();
+            //if (employee == null)
+            //    return NotFound();
+            return View();
         }
         [HttpPost]
         public IActionResult Update(EmployeeModel model)
         {
 
-            var employee = _employeeList.Where(x => x.Id == model.Id)
-                                         .FirstOrDefault();
-            if (employee == null)
-                return NotFound();
+            //var employee = _employeeList.Where(x => x.Id == model.Id)
+            //                             .FirstOrDefault();
+            //if (employee == null)
+            //    return NotFound();
 
-            employee.Name = model.Name;
-            employee.DateOfBirth = model.DateOfBirth;
+            //employee.Name = model.Name;
+            //employee.DateOfBirth = model.DateOfBirth;
             TempData["message"] = "Employee updated successfully!";
             return RedirectToAction(nameof(Index));
         }
@@ -84,11 +82,11 @@ namespace EM.Web.Controllers
         {
             if (id <= 0)
                 return NotFound();
-            var employee = _employeeList.Where(x => x.Id == id)
-                                         .FirstOrDefault();
-            if (employee == null)
-                return NotFound();
-            return View(employee);
+            //var employee = _employeeList.Where(x => x.Id == id)
+            //                             .FirstOrDefault();
+            //if (employee == null)
+            //    return NotFound();
+            return View();
         }
 
         [HttpGet]
@@ -96,21 +94,21 @@ namespace EM.Web.Controllers
         {
             if (id <= 0)
                 return NotFound();
-            var employee = _employeeList.Where(x => x.Id == id)
-                                         .FirstOrDefault();
-            if (employee == null)
-                return NotFound();
-            return View(employee);
+            //var employee = _employeeList.Where(x => x.Id == id)
+            //                             .FirstOrDefault();
+            //if (employee == null)
+            //    return NotFound();
+            return View();
         }
         [HttpPost]
         public IActionResult Delete(EmployeeModel model)
         {
 
-            var employee = _employeeList.Where(x => x.Id == model.Id)
-                                         .FirstOrDefault();
-            if (employee == null)
-                return NotFound();
-            _employeeList.Remove(employee);
+            //var employee = _employeeList.Where(x => x.Id == model.Id)
+            //                             .FirstOrDefault();
+            //if (employee == null)
+            //    return NotFound();
+            //_employeeList.Remove(employee);
             TempData["message"] = "Employee deleted successfully!";
             return RedirectToAction(nameof(Index));
         }

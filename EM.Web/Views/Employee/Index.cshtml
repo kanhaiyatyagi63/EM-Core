@@ -1,4 +1,4 @@
-﻿@model List<EM.Web.Models.EmployeeModel>;
+﻿@model List<EM.Models.Employee.EmployeeViewModel>;
 @{
     ViewData["Title"] = "Employee Page";
 }
@@ -13,13 +13,19 @@
         @TempData["message"]
     </div>
 }
-
+<hr />
+<div>
+    <a type="button" asp-controller="employee" asp-action="create" class="btn btn-primary"> Create</a>
+</div>
+<hr />
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Date Of Birth</th>
+            <th scope="col">Job Title</th>
+            <th scope="col">D.O.B</th>
+
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -31,6 +37,7 @@
                 <tr>
                     <th scope="row">@emp.Id</th>
                     <td>@emp.Name</td>
+                    <td>@emp.JobTitle</td>
                     <td>@emp.DateOfBirth</td>
                     <td>
                         <a type="button" asp-area="" asp-action="look" asp-controller="employee" asp-route-id="@emp.Id" class="btn-warning btn"> View </a>
