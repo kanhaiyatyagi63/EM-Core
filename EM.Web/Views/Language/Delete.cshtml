@@ -1,0 +1,34 @@
+﻿@model EM.Models.Language.AddOrEditlanguageModel;
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="row">
+    <div class="col-md-9">
+        <form action="delete" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" readonly class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-4">
+                <a type="button" asp-action="Index" asp-controller="language" class="btn btn-warning btn-md mr-2">Back</a>
+                <button type="submit" class="btn btn-primary btn-md">Delete</button>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+            @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+        }

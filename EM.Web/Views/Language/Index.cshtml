@@ -1,0 +1,54 @@
+﻿@model List<EM.Models.Language.AddOrEditlanguageModel>;
+@{
+    ViewData["Title"] = "Language";
+}
+
+<div class="text-center bg">
+    <h1 class="display-4">Welcome to Language Management</h1>
+</div>
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["message"]
+    </div>
+}
+
+<hr />
+<div>
+    <a type="button" asp-controller="language" asp-action="create" class="btn btn-primary"> Create</a>
+</div>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var emp in Model)
+            {
+                <tr>
+                    <th scope="row">@emp.Id</th>
+                    <td>@emp.Name</td>
+                    <td>
+                        <a type="button" asp-area="" asp-action="look" asp-controller="language" asp-route-id="@emp.Id" class="btn-warning btn"> View </a>
+                        <a type="button" asp-area="" asp-action="edit" asp-controller="language" asp-route-id="@emp.Id" class="btn-primary btn ml-2"> Edit </a>
+                        <a type="button" asp-area="" asp-action="delete" asp-controller="language" asp-route-id="@emp.Id" class="btn-danger btn ml-2"> Delete </a>
+
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">No Record Found</td>
+            </tr>
+        }
+    </tbody>
+</table>
