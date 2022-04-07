@@ -3,15 +3,10 @@ using EM.DataLayer.Entities;
 using EM.Models.Language;
 using EM.Services.Abstracts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EM.Services
 {
-    public class LanguageService: ILanguageService
+    public class LanguageService : ILanguageService
     {
         public static EmployeeContext _dbContext;
 
