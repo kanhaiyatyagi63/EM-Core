@@ -1,17 +1,5 @@
-﻿@model string
-
-@if (!string.IsNullOrEmpty(Model)) { 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; @Model - EM.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>
-}
-else
-{
-    <footer class="border-top footer text-muted">
+﻿<footer class="border-top footer text-muted">
     <div class="container">
         &copy; 2022 - EM.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
-}
