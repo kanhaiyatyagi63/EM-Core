@@ -5,11 +5,13 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EM.Web", "EM.Web\EM.Web.csproj", "{8542B376-AC59-4C16-BA4F-842D70AF0EE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Services", "EM.Services\EM.Services.csproj", "{03AC3718-D5BE-4DD1-819D-C8FB33F7FC36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EM.Services", "EM.Services\EM.Services.csproj", "{03AC3718-D5BE-4DD1-819D-C8FB33F7FC36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Models", "EM.Model\EM.Models.csproj", "{A58F4509-54CB-4DBA-A8B7-A2BF1BEFB6AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EM.Models", "EM.Model\EM.Models.csproj", "{A58F4509-54CB-4DBA-A8B7-A2BF1BEFB6AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.DataLayer", "EM.DataLayer\EM.DataLayer.csproj", "{E6A91818-96CB-471B-B62A-BE588D3070BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EM.DataLayer", "EM.DataLayer\EM.DataLayer.csproj", "{E6A91818-96CB-471B-B62A-BE588D3070BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.API", "EM.API\EM.API.csproj", "{61D22611-CC85-4AC9-A764-492C3B8ED5B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E6A91818-96CB-471B-B62A-BE588D3070BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6A91818-96CB-471B-B62A-BE588D3070BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6A91818-96CB-471B-B62A-BE588D3070BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61D22611-CC85-4AC9-A764-492C3B8ED5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D22611-CC85-4AC9-A764-492C3B8ED5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D22611-CC85-4AC9-A764-492C3B8ED5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D22611-CC85-4AC9-A764-492C3B8ED5B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

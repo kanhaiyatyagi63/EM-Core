@@ -1,7 +1,5 @@
 ﻿using EM.Models.Employee;
-using EM.Services.Abstracts;
 using EM.Web.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace EM.Web.Controllers
 {

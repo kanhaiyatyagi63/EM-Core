@@ -1,7 +1,10 @@
+global using EM.Services.Abstracts;
+global using Microsoft.AspNetCore.Mvc;
+
 using EM.DataLayer.Context;
 using EM.Services;
-using EM.Services.Abstracts;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

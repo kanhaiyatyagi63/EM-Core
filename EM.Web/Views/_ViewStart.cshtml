@@ -1,3 +1,13 @@
-﻿@{
+﻿
+@{
+    bool isUser = false;
+}
+
+@if(isUser){
+    Layout = "_UserLayout";
+}
+else
+{
     Layout = "_Layout";
+    
 }

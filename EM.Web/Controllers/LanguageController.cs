@@ -1,6 +1,4 @@
 ﻿using EM.Models.Language;
-using EM.Services.Abstracts;
-using Microsoft.AspNetCore.Mvc;
 
 namespace EM.Web.Controllers
 {

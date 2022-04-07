@@ -22,8 +22,9 @@ namespace EM.Services
                 Id = x.Id,
                 Name = x.Name
             }).FirstOrDefaultAsync(x => x.Id == id);
-
         }
+
+
 
         public async Task<List<AddOrEditDepartment>> GetAllAsync()
         {
