@@ -16,3 +16,13 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.ml-5 {
+margin-left: 5px;
+}
+
+.mr-mb-5 {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}

@@ -10,6 +10,8 @@ namespace EM.Services
     {
         public static EmployeeContext _dbContext;
 
+        public static List<AddOrEditDepartment> _list = new List<AddOrEditDepartment>();
+
         public DepartmentService(EmployeeContext dbContext)
         {
             _dbContext = dbContext;
@@ -22,9 +24,8 @@ namespace EM.Services
                 Id = x.Id,
                 Name = x.Name
             }).FirstOrDefaultAsync(x => x.Id == id);
+
         }
-
-
 
         public async Task<List<AddOrEditDepartment>> GetAllAsync()
         {

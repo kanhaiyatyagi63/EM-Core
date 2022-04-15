@@ -15,7 +15,6 @@ public class DepartmentController : Controller
     // only view operation, no need to add post method
     public async Task<IActionResult> Index()
     {
-        throw new NotImplementedException();
         return View(await _departmentService.GetAllAsync());
     }
 

@@ -4,9 +4,7 @@ global using Microsoft.AspNetCore.Mvc;
 using EM.DataLayer.Context;
 using EM.Services;
 using EM.Web.Extensions;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,10 +18,9 @@ builder.Services
        .AddDbContext<EmployeeContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DataConnection")));
 
-builder.Services.AddScoped<IDepartmentService, DepartmentService>();
-builder.Services.AddScoped<ILanguageService, LanguageService>();
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-// http request piple 
+builder.Services.RegisterServices();
+
+// http request piple
 var app = builder.Build();
 // middlewares => 
 

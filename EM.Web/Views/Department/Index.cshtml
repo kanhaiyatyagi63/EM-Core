@@ -51,4 +51,116 @@
             </tr>
         }
     </tbody>
+
+
 </table>
+<br />
+
+<div>
+    <h1>
+        Get all department with the help of javascript
+    </h1>
+    <button id="btn_getdepartments" class="btn btn-outline-primary"> Load department</button>
+
+    <div class="row" id="div_departments">
+    </div>
+</div>
+
+<div>
+    <h1>
+        Insert department with the help of javascript
+    </h1>
+    <div class="row">
+        <div>
+            <input type="text" id="txt_name" class="form-control" placeholder="Enter department name" />
+
+            <br />
+            <button type="button" class="btn btn-success" id="btn_insertDepartment">Save</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section scripts{
+<script>
+
+    $("#btn_getdepartments").click(function(){
+       loadDepartments();
+    });
+     $("#btn_insertDepartment").click(function(){
+       addDepartment();
+    });
+
+
+    function loadDepartments(){
+
+    $.ajax({
+    url: "https://localhost:7078/api/department",
+    type: "GET",
+    beforeSend: function(){
+        $("#div_departments").empty();
+    },
+    success: function(result){
+        result.forEach(function(item, index){
+         var divCard =   '<div class="card mr-mb-5 " style="width: 18rem;">' +
+            '<div class="card-body">' +
+                '<h5 class="card-title">Department Information</h5>' +
+                '<h6 class="card-subtitle mb-2 text-muted">' +
+                    '<a target="blank"  href="department/look/'+ item.id+'" class="btn-warning btn ml-5"> View </a>' +
+                    '<a target="blank"  href="department/edit/'+ item.id+'"  class="btn-primary btn ml-5"> Edit </a>' +
+                    '<a target="blank"  href="department/delete/'+ item.id+'"  class="btn-danger btn ml-5"> Delete </a>' +
+                '</h6>' +
+                '<p class="card-text">' +
+
+                    'Id:'+  item.id+ '<br />' +
+                    'name:'+ item.name  +'<br />' +
+                '</p>'+
+            '</div>'+
+        '</div>';
+        $('#div_departments').append(divCard);
+        });
+
+    },
+    error: function(error){
+        alert("get department error!");
+        console.log(error);
+    },
+    complete: function(){
+    }
+
+    });
+    }
+
+
+    function addDepartment(){
+    const deptname = $("#txt_name").val();
+    var department = {
+    "id" : 0,
+    "name" : deptname
+    };
+
+    $.ajax({
+        url: "https://localhost:7078/api/department",
+        method: 'POST',
+        headers: {
+              "Content-Type": "application/json"
+        },
+        data: JSON.stringify(department),
+        success: function(result){
+        console.log(result);
+        },
+        error: function(error){
+        console.error(error);
+        },
+        complete: function(){}
+    });
+
+
+
+    }
+
+</script>
+}

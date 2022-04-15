@@ -1,5 +1,4 @@
 ﻿using EM.Models.Employee;
-using EM.Web.Models;
 
 namespace EM.Web.Controllers
 {
@@ -60,7 +59,7 @@ namespace EM.Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Update(EmployeeModel model)
+        public IActionResult Update(EmployeeAddModel model)
         {
 
             //var employee = _employeeList.Where(x => x.Id == model.Id)
@@ -99,7 +98,7 @@ namespace EM.Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Delete(EmployeeModel model)
+        public IActionResult Delete(EmployeeAddModel model)
         {
 
             //var employee = _employeeList.Where(x => x.Id == model.Id)
